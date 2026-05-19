@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jeju Trip App</title>
-
   <!-- Tailwind CDN：方便你直接上 GitHub Pages -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -29,77 +28,44 @@
         }
       }
     }
-  .fixed-dogs-footer {
-  position: fixed;
-  left: 50%;
-  bottom: 0;
-  transform: translateX(-50%);
-  width: 100%;
-  max-width: 460px;
-  height: 88px;
-  background-image: url('./dogs-bottom.jpg');
-  background-size: cover;
-  background-position: center bottom;
-  background-repeat: no-repeat;
-  z-index: 80;
-  pointer-events: none;
-}</script>
-
+  </script>
   <style>
-在 <style> 入面加入：
-
-.bottom-dogs-banner {
-  width: 100%;
-  height: 95px;
-  margin-top: 28px;
-  background-image: url('./dogs-bottom.jpg');
-  background-size: cover;
-  background-position: center bottom;
-  background-repeat: no-repeat;
-  border-radius: 22px;
-  opacity: 0.92;
-}
-
     html, body {
-margin: 0;
-padding: 0;
-background: #F6EEDF;
-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Hiragino Sans GB", "Noto Sans TC", sans-serif;
-color: #5F5A53;
-}
-
+      margin: 0;
+      padding: 0;
+      background: #F6EEDF;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Hiragino Sans GB", "Noto Sans TC", sans-serif;
+      color: #5F5A53;
+    }
     body {
       min-height: 100vh;
     }
-
-.app-shell {
-max-width: 460px;
-margin: 0 auto;
-min-height: 100vh;
-background: #F6EEDF;
-position: relative;
-box-shadow: 0 0 0 rgba(0,0,0,0);
-}
-.banner {
-height: 250px;
-background-image: url('./A1.jpg');
-background-size: auto 250px;
-background-repeat: repeat-x;
-background-position: 0 center;
-position: relative;
-overflow: hidden;
-animation: bannerSlide 35s linear infinite;
-}
-
-@keyframes bannerSlide {
-0% {
-background-position: 0 center;
-}
-100% {
-background-position: -600px center;
-}
-}
-
+    .app-shell {
+      max-width: 460px;
+      margin: 0 auto;
+      min-height: 100vh;
+      background: #F6EEDF;
+      position: relative;
+      box-shadow: 0 0 0 rgba(0,0,0,0);
+    }
+    .banner {
+      height: 250px;
+      background-image: url('./A1.jpg');
+      background-size: auto 250px;
+      background-repeat: repeat-x;
+      background-position: 0 center;
+      position: relative;
+      overflow: hidden;
+      animation: bannerSlide 35s linear infinite;
+    }
+    @keyframes bannerSlide {
+      0% {
+        background-position: 0 center;
+      }
+      100% {
+        background-position: -600px center;
+      }
+    }
     .banner::after {
       content: "";
       position: absolute;
@@ -111,66 +77,70 @@ background-position: -600px center;
       border-bottom-left-radius: 28px;
       border-bottom-right-radius: 28px;
     }
-
-   .main-wrap {
-margin-top: -28px;
-background: #FFFDF8;
-border-top-left-radius: 30px;
-border-top-right-radius: 30px;
-min-height: calc(100vh - 220px);
-position: relative;
-z-index: 10;
-box-shadow: 0 -8px 24px rgba(120, 100, 70, 0.06);
-}
-
-
+    .main-wrap {
+      margin-top: -28px;
+      background: #FFFDF8;
+      border-top-left-radius: 30px;
+      border-top-right-radius: 30px;
+      min-height: calc(100vh - 220px);
+      position: relative;
+      z-index: 10;
+      box-shadow: 0 -8px 24px rgba(120, 100, 70, 0.06);
+    }
     .chip-scroll {
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
     }
-
     .chip-scroll::-webkit-scrollbar {
       display: none;
     }
-
-   .date-chip {
-min-width: 68px;
-border-radius: 18px;
-padding: 10px 12px;
-border: 1px dashed #DCCDB8;
-background: #FFF9F0;
-box-shadow: 0 3px 10px rgba(120, 100, 70, 0.04);
-transition: all .2s ease;
-}
-
-.date-chip.active {
-background: linear-gradient(180deg, #F8F1E5 0%, #F2E6D5 100%);
-border-color: #D8C3A5;
-transform: translateY(-1px);
-}
-
-.input:focus {
-border-color: #CDB89D;
-box-shadow: 0 0 0 3px rgba(205,184,157,0.15);
-}
-
-
-.floating-btn {
-position: fixed;
-right: 18px;
-bottom: 22px;
-width: 58px;
-height: 58px;
-border-radius: 999px;
-background: linear-gradient(135deg, #D8C3A5 0%, #CDB89D 100%);
-color: white;
-border: none;
-font-size: 30px;
-box-shadow: 0 10px 20px rgba(170, 140, 100, 0.22);
-z-index: 999;
-cursor: pointer;
-}
+    .date-chip {
+      min-width: 68px;
+      border-radius: 18px;
+      padding: 10px 12px;
+      border: 1px dashed #DCCDB8;
+      background: #FFF9F0;
+      box-shadow: 0 3px 10px rgba(120, 100, 70, 0.04);
+      transition: all .2s ease;
+    }
+    .date-chip.active {
+      background: linear-gradient(180deg, #F8F1E5 0%, #F2E6D5 100%);
+      border-color: #D8C3A5;
+      transform: translateY(-1px);
+    }
+    .floating-btn {
+      position: fixed;
+      right: 18px;
+      bottom: 136px;
+      width: 58px;
+      height: 58px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #D8C3A5 0%, #CDB89D 100%);
+      color: white;
+      border: none;
+      font-size: 30px;
+      box-shadow: 0 10px 20px rgba(170, 140, 100, 0.22);
+      z-index: 999;
+      cursor: pointer;
+    }
+    .fixed-dogs-footer {
+      position: fixed;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 460px;
+      height: 125px;
+      background-image: url('./dog.jpg');
+      background-size: contain;
+      background-position: center bottom;
+      background-repeat: no-repeat;
+      opacity: 0.78;
+      filter: saturate(0.95) brightness(1.02);
+      z-index: 80;
+      pointer-events: none;
+    }
     .modal-mask {
       position: fixed;
       inset: 0;
@@ -181,11 +151,10 @@ cursor: pointer;
       justify-content: center;
       padding: 0;
     }
-
     .modal-card {
       width: 100%;
       max-width: 460px;
-      background: white;
+      background: #FFFDF8;
       border-top-left-radius: 24px;
       border-top-right-radius: 24px;
       max-height: 88vh;
@@ -193,51 +162,42 @@ cursor: pointer;
       padding: 20px 18px 28px 18px;
       box-shadow: 0 -10px 30px rgba(0,0,0,.08);
     }
-
     .dragging {
       opacity: .45;
     }
-
-   .tab-btn.active {
-color: #6E7FAE;
-background: #F3EBDD;
-}
-
-.input {
-width: 100%;
-border-radius: 14px;
-border: 1px solid #E8DCCB;
-background: #FFFDF8;
-padding: 12px 14px;
-font-size: 14px;
-outline: none;
-}
-
-
-.input:focus {
-border-color: #CDB89D;
-box-shadow: 0 0 0 3px rgba(205,184,157,0.15);
-}
-
+    .tab-btn.active {
+      color: #6E7FAE;
+      background: #F3EBDD;
+    }
+    .input {
+      width: 100%;
+      border-radius: 14px;
+      border: 1px solid #E8DCCB;
+      background: #FFFDF8;
+      padding: 12px 14px;
+      font-size: 14px;
+      outline: none;
+    }
+    .input:focus {
+      border-color: #CDB89D;
+      box-shadow: 0 0 0 3px rgba(205,184,157,0.15);
+    }
     .textarea {
       min-height: 92px;
       resize: vertical;
     }
-
     .section-title {
       font-size: 15px;
       font-weight: 700;
-      color: #475569;
+      color: #6A625A;
       margin-bottom: 8px;
     }
-
- .thin-card {
-border-radius: 18px;
-background: #FFF9F0;
-border: 1px dashed #E2D2BE;
-box-shadow: 0 6px 16px rgba(120, 100, 70, 0.06);
-}
-
+    .thin-card {
+      border-radius: 18px;
+      background: #FFF9F0;
+      border: 1px solid #EADFCF;
+      box-shadow: 0 6px 16px rgba(120, 100, 70, 0.06);
+    }
     .icon-pill {
       width: 30px;
       height: 30px;
@@ -247,14 +207,12 @@ box-shadow: 0 6px 16px rgba(120, 100, 70, 0.06);
       justify-content: center;
       font-size: 14px;
     }
-
     .settlement-line:last-child {
       margin-bottom: 0;
     }
-
     .small-note {
       font-size: 12px;
-      color: #94A3B8;
+      color: #9A8F83;
     }
   </style>
 </head>
@@ -277,7 +235,7 @@ box-shadow: 0 6px 16px rgba(120, 100, 70, 0.06);
     </header>
 
     <!-- Main -->
-    <main class="main-wrap px-4 pb-36">
+<main class="main-wrap px-4 pb-56">
       <!-- Tab Bar -->
       <div class="pt-4">
         <div class="grid grid-cols-4 gap-2 bg-mist rounded-2xl p-1">
@@ -660,9 +618,11 @@ box-shadow: 0 6px 16px rgba(120, 100, 70, 0.06);
           </div>
         </div>
       </section>
-    <div class="bottom-dogs-banner"></div></main>
+   
 
-    <!-- FAB -->
+  </main>
+<div class="fixed-dogs-footer"></div>
+  <!-- FAB -->
     <button v-if="activeTab==='itinerary'" class="floating-btn" @click="openAddItinerary()">＋</button>
     <button v-if="activeTab==='shopping'" class="floating-btn" @click="openAddShopping()">＋</button>
     <button v-if="activeTab==='expenses'" class="floating-btn" @click="openAddExpense()">＋</button>
