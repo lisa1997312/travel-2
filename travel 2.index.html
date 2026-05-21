@@ -1,41 +1,1898 @@
-2025 Pokemon Japanese M2a-mega Dream EX 223 Mega Charizard X EX Mega Attack Rare
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jeju Trip App</title>
+  <!-- Tailwind CDN：方便你直接上 GitHub Pages -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: '#F7F3EE',
+            hydra: '#AFC3E8',
+            hydraDeep: '#7E9ED1',
+            hydraSoft: '#E7EFFB',
+            sand: '#EFE4D5',
+            ink: '#4B5563',
+            mist: '#F9FAFB',
+            mint: '#DDEBDD',
+            blush: '#F3E7EC'
+          },
+          boxShadow: {
+            soft: '0 10px 30px rgba(0,0,0,0.08)',
+            card: '0 8px 20px rgba(0,0,0,0.06)'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #F6EEDF;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Hiragino Sans GB", "Noto Sans TC", sans-serif;
+      color: #5F5A53;
+    }
+    body {
+      min-height: 100vh;
+    }
+    .app-shell {
+      max-width: 460px;
+      margin: 0 auto;
+      min-height: 100vh;
+      background: #F6EEDF;
+      position: relative;
+      box-shadow: 0 0 0 rgba(0,0,0,0);
+    }
+    .banner {
+      height: 250px;
+      background-image: url('./A1.jpg');
+      background-size: auto 250px;
+      background-repeat: repeat-x;
+      background-position: 0 center;
+      position: relative;
+      overflow: hidden;
+      animation: bannerSlide 35s linear infinite;
+    }
+    @keyframes bannerSlide {
+      0% {
+        background-position: 0 center;
+      }
+      100% {
+        background-position: -600px center;
+      }
+    }
+    .banner::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -2px;
+      height: 44px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0.25));
+      border-bottom-left-radius: 28px;
+      border-bottom-right-radius: 28px;
+    }
+    .main-wrap {
+      margin-top: -28px;
+      background: #FFFDF8;
+      border-top-left-radius: 30px;
+      border-top-right-radius: 30px;
+      min-height: calc(100vh - 220px);
+      position: relative;
+      z-index: 10;
+      box-shadow: 0 -8px 24px rgba(120, 100, 70, 0.06);
+    }
+    .chip-scroll {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .chip-scroll::-webkit-scrollbar {
+      display: none;
+    }
+    .date-chip {
+      min-width: 68px;
+      border-radius: 18px;
+      padding: 10px 12px;
+      border: 1px dashed #DCCDB8;
+      background: #FFF9F0;
+      box-shadow: 0 3px 10px rgba(120, 100, 70, 0.04);
+      transition: all .2s ease;
+    }
+    .date-chip.active {
+      background: linear-gradient(180deg, #F8F1E5 0%, #F2E6D5 100%);
+      border-color: #D8C3A5;
+      transform: translateY(-1px);
+    }
+    .floating-btn {
+      position: fixed;
+      right: 18px;
+      bottom: 136px;
+      width: 58px;
+      height: 58px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #D8C3A5 0%, #CDB89D 100%);
+      color: white;
+      border: none;
+      font-size: 30px;
+      box-shadow: 0 10px 20px rgba(170, 140, 100, 0.22);
+      z-index: 999;
+      cursor: pointer;
+    }
+.fixed-dogs-footer {
+  position: fixed;
+  left: 50%;
+  bottom: 8px;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 460px;
+  height: 135px;
+  background-image: url('./dog.jpg');
+  background-size: contain;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  opacity: 0.68;
+  filter: saturate(0.92) brightness(1.04);
+  z-index: 40;
+  pointer-events: none;
+}
+    .modal-mask {
+      position: fixed;
+      inset: 0;
+      background: rgba(32, 41, 57, 0.40);
+      z-index: 1000;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 0;
+    }
+    .modal-card {
+      width: 100%;
+      max-width: 460px;
+      background: #FFFDF8;
+      border-top-left-radius: 24px;
+      border-top-right-radius: 24px;
+      max-height: 88vh;
+      overflow-y: auto;
+      padding: 20px 18px 28px 18px;
+      box-shadow: 0 -10px 30px rgba(0,0,0,.08);
+    }
+    .dragging {
+      opacity: .45;
+    }
+    .tab-btn.active {
+      color: #6E7FAE;
+      background: #F3EBDD;
+    }
+    .input {
+      width: 100%;
+      border-radius: 14px;
+      border: 1px solid #E8DCCB;
+      background: #FFFDF8;
+      padding: 12px 14px;
+      font-size: 14px;
+      outline: none;
+    }
+    .input:focus {
+      border-color: #CDB89D;
+      box-shadow: 0 0 0 3px rgba(205,184,157,0.15);
+    }
+    .textarea {
+      min-height: 92px;
+      resize: vertical;
+    }
+    .section-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #6A625A;
+      margin-bottom: 8px;
+    }
+    .thin-card {
+      border-radius: 18px;
+      background: #FFF9F0;
+      border: 1px solid #EADFCF;
+      box-shadow: 0 6px 16px rgba(120, 100, 70, 0.06);
+    }
+    .icon-pill {
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+    .settlement-line:last-child {
+      margin-bottom: 0;
+    }
+    .small-note {
+      font-size: 12px;
+      color: #9A8F83;
+    }
+  </style>
+</head>
+<body>
+  <div id="app" class="app-shell">
+    <!-- Header Banner -->
+    <header class="banner">
+      <div class="absolute inset-0 bg-gradient-to-b from-black/10 to-white/0"></div>
 
-Quantity
-1
+      <div class="absolute top-4 left-4 right-4 flex items-start justify-between z-10">
+        <div class="bg-white/78 backdrop-blur rounded-2xl px-3 py-2 shadow-sm">
+          <div class="text-xs text-slate-500">Jeju Road Trip</div>
+          <div class="text-base font-semibold text-slate-700">Mocha & Friends</div>
+        </div>
+        <div class="bg-white/78 backdrop-blur rounded-2xl px-3 py-2 shadow-sm text-right">
+          <div class="text-xs text-slate-500">2026/05/26–05/30</div>
+          <div class="text-sm font-semibold text-slate-700">濟州島自駕遊</div>
+        </div>
+      </div>
+    </header>
 
+    <!-- Main -->
+<main class="main-wrap px-4 pb-64">
+      <!-- Tab Bar -->
+      <div class="pt-4">
+        <div class="grid grid-cols-4 gap-2 bg-mist rounded-2xl p-1">
+          <button class="tab-btn rounded-2xl py-2.5 text-xs font-medium"
+                  :class="{ active: activeTab==='itinerary' }"
+                  @click="activeTab='itinerary'">
+            📍<div class="mt-1">每日行程</div>
+          </button>
+          <button class="tab-btn rounded-2xl py-2.5 text-xs font-medium"
+                  :class="{ active: activeTab==='info' }"
+                  @click="activeTab='info'">
+            ℹ️<div class="mt-1">資訊</div>
+          </button>
+          <button class="tab-btn rounded-2xl py-2.5 text-xs font-medium"
+                  :class="{ active: activeTab==='shopping' }"
+                  @click="activeTab='shopping'">
+            🧺<div class="mt-1">購物清單</div>
+          </button>
+          <button class="tab-btn rounded-2xl py-2.5 text-xs font-medium"
+                  :class="{ active: activeTab==='expenses' }"
+                  @click="activeTab='expenses'">
+            💰<div class="mt-1">花費</div>
+          </button>
+        </div>
+      </div>
 
+      <!-- Itinerary -->
+      <section v-if="activeTab === 'itinerary'" class="pt-4">
+        <div class="chip-scroll flex gap-3 pb-1">
+          <button v-for="(day, idx) in days"
+                  :key="day.date"
+                  class="date-chip text-center shrink-0"
+                  :class="{ active: selectedDayIndex===idx }"
+                  @click="selectedDayIndex=idx">
+            <div class="text-sm font-semibold text-slate-700">{{ day.weekShort }}</div>
+            <div class="text-2xl font-bold leading-none mt-1 text-slate-800">{{ day.dayNum }}</div>
+            <div class="text-[11px] text-slate-400 mt-1">{{ day.shortDate }}</div>
+          </button>
+        </div>
 
-2025 Pokemon Japanese M2-inferno X 110 Mega Charizard X EX Special Art Rare
-2025 Pokemon Japanese M2-inferno X 110 Mega Charizard X EX Special Art Rare
+        <!-- Weather -->
+        <div class="thin-card mt-4 p-4">
+          <div class="flex items-center justify-between">
+            <div>
+              <div class="text-xs text-slate-400">天氣資訊</div>
+              <div class="text-sm font-semibold text-slate-700">{{ selectedDay.title }}・{{ selectedDay.fullDateLabel }}</div>
+            </div>
+            <div v-if="weather.loading" class="text-sm text-slate-400">讀取中…</div>
+            <div v-else-if="weather.error" class="text-sm text-rose-400">天氣讀取失敗</div>
+            <div v-else class="flex items-center gap-3">
+              <div class="text-2xl">{{ weather.icon }}</div>
+              <div class="text-right">
+                <div class="text-sm font-semibold text-slate-700">{{ weather.label }}</div>
+                <div class="text-sm text-slate-500">{{ weather.temp }}°C / 體感 {{ weather.feels }}°C</div>
+              </div>
+            </div>
+          </div>
+          <div class="small-note mt-2">顯示目前濟州即時天氣（未來太遠日期未必能提供準確預報）。</div>
+        </div>
 
-Quantity
-1
+        <!-- Itinerary List -->
+        <div class="mt-4 space-y-3">
+          <template v-for="(item, index) in selectedDay.items" :key="item.id">
+            <!-- Travel leg -->
+            <div v-if="index > 0" class="flex items-center gap-3 px-2">
+              <div class="w-8 flex justify-center text-slate-400 text-sm">
+                <span v-if="(item.travelMode || 'DRIVING')==='WALKING'">🚶</span>
+                <span v-else-if="(item.travelMode || 'DRIVING')==='TRANSIT'">🚌</span>
+                <span v-else>🚗</span>
+              </div>
+              <div class="flex-1 text-xs text-slate-400">
+                {{ item.travelText || item.manualTravelText || '交通時間可於編輯時填寫，或之後接入 Google Maps API 自動計算' }}
+              </div>
+            </div>
 
+            <!-- Flight card -->
+            <div v-if="item.category === 'flight'"
+                 class="thin-card p-4 cursor-pointer"
+                 draggable="true"
+                 @dragstart="dragStart(index)"
+                 @dragover.prevent
+                 @drop="dropOn(index)"
+                 @click="openMap(item)">
+              <div class="flex items-start justify-between gap-3">
+                <div class="flex items-start gap-3">
+                  <div class="icon-pill bg-hydraSoft">✈️</div>
+                  <div>
+                    <div class="text-xs text-slate-400">航班資訊</div>
+                    <div class="text-base font-semibold text-slate-800">{{ item.name }}</div>
+                    <div class="text-sm text-slate-500 mt-1">{{ item.route }}</div>
+                    <div class="text-sm text-slate-500">航班：{{ item.flightNo }}</div>
+                    <div class="text-sm text-slate-500" v-if="item.note">{{ item.note }}</div>
+                  </div>
+                </div>
+                <button class="text-sm text-hydraDeep font-medium" @click.stop="editItinerary(item, index)">編輯</button>
+              </div>
+            </div>
 
+            <!-- Normal card -->
+            <div v-else
+                 class="thin-card p-4 cursor-pointer"
+                 draggable="true"
+                 @dragstart="dragStart(index)"
+                 @dragover.prevent
+                 @drop="dropOn(index)"
+                 @click="openMap(item)">
+              <div class="flex items-start justify-between gap-3">
+                <div class="flex items-start gap-3 flex-1 min-w-0">
+                  <div class="icon-pill"
+                       :class="categoryColor(item.category)">
+                    {{ categoryEmoji(item.category) }}
+                  </div>
+                  <div class="min-w-0 flex-1">
+                    <div class="flex items-center gap-2 flex-wrap">
+                      <div class="text-base font-semibold text-slate-800 break-words">{{ item.name }}</div>
+                      <span class="text-[11px] px-2 py-1 rounded-full bg-slate-100 text-slate-500">
+                        {{ categoryLabel(item.category) }}
+                      </span>
+                    </div>
 
-2025 Pokemon Japanese M2a-mega Dream EX 250 Mega Dragonite EX Mega Ultra Rare
-2025 Pokemon Japanese M2a-mega Dream EX 250 Mega Dragonite EX Mega Ultra Rare
+                    <div v-if="item.address" class="text-sm text-slate-500 mt-1 break-words">
+                      {{ item.address }}
+                    </div>
+                    <div v-if="item.hours" class="text-sm text-slate-500 mt-1">
+                      營業時間：{{ item.hours }}
+                    </div>
+                    <div v-if="item.ticket" class="text-sm text-slate-500 mt-1">
+                      門票：{{ item.ticket }}
+                    </div>
+                    <div v-if="item.note" class="text-sm text-slate-500 mt-1 whitespace-pre-line">
+                      {{ item.note }}
+                    </div>
+                  </div>
+                </div>
+                <button class="text-sm text-hydraDeep font-medium shrink-0" @click.stop="editItinerary(item, index)">編輯</button>
+              </div>
+            </div>
+          </template>
+        </div>
+      </section>
 
-Quantity
-1
+      <!-- Info -->
+      <section v-if="activeTab === 'info'" class="pt-4 space-y-4">
+        <!-- Exchange -->
+      <div class="rounded-2xl border border-[#EADFCF] bg-[#FBF3E6] p-4">
+  <div class="text-xs text-[#9A8F83]">換算港幣 HKD（即時匯率）</div>
+  <div class="text-2xl font-bold text-[#5F5348] mt-1">
+    HK$ {{ convertKRWtoHKD(krwInput).toFixed(2) }}
+  </div>
+  <div class="text-xs text-[#A89B8D] mt-1">
+    1 KRW ≈ HK$ {{ exchangeRate.toFixed(5) }}
+  </div>
+</div>
+<div class="rounded-2xl border border-dashed border-[#DDCFBC] bg-[#FBF4E8] p-4 shadow-[0_4px_12px_rgba(140,110,80,0.06)]">
+  <div class="text-xs tracking-wide text-[#9B8E81]">換算港幣 HKD（即時匯率）</div>
+  <div class="text-3xl font-bold text-[#5B4E43] mt-2">
+    HK$ {{ convertKRWtoHKD(krwInput).toFixed(2) }}
+  </div>
+  <div class="text-xs text-[#AE9F90] mt-2">
+    1 KRW ≈ HK$ {{ exchangeRate.toFixed(5) }}
+  </div>
+</div>
 
+        <!-- Flight Info -->
+        <div class="thin-card p-4">
+          <div class="section-title">航班資訊</div>
+          <div class="space-y-3">
+            <div v-for="flight in tripInfo.flights" :key="flight.flightNo" class="rounded-2xl bg-slate-50 p-4">
+              <div class="flex items-center justify-between">
+                <div class="text-sm font-semibold text-slate-700">{{ flight.type }}</div>
+                <div class="text-xs text-slate-400">{{ flight.date }}</div>
+              </div>
+              <div class="mt-2 text-lg font-bold text-slate-800">{{ flight.fromCode }} → {{ flight.toCode }}</div>
+              <div class="text-sm text-slate-500 mt-1">{{ flight.from }} → {{ flight.to }}</div>
+              <div class="grid grid-cols-2 gap-3 mt-3 text-sm">
+                <div><span class="text-slate-400">起飛：</span>{{ flight.depart }}</div>
+                <div><span class="text-slate-400">抵達：</span>{{ flight.arrive }}</div>
+                <div><span class="text-slate-400">飛行時間：</span>{{ flight.duration }}</div>
+                <div><span class="text-slate-400">航班編號：</span>{{ flight.flightNo }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
 
+        <!-- Accommodation -->
+        <div class="thin-card p-4">
+          <div class="section-title">住宿資訊</div>
+          <div class="space-y-3">
+            <div v-for="stay in tripInfo.stays" :key="stay.id" class="rounded-2xl bg-slate-50 p-4">
+              <div class="flex items-start justify-between gap-3">
+                <div>
+                  <div class="text-sm font-semibold text-slate-700">{{ stay.date }}</div>
+                  <div class="text-base font-bold text-slate-800 mt-1">{{ stay.name }}</div>
+                  <div class="text-sm text-slate-500 mt-1 break-words">{{ stay.address }}</div>
+                  <div v-if="stay.phone" class="text-sm text-slate-500 mt-1">電話：{{ stay.phone }}</div>
+                </div>
+                <button class="text-sm text-hydraDeep font-medium shrink-0" @click="openMap(stay)">導航</button>
+              </div>
+            </div>
+          </div>
+        </div>
 
-2025 Pokemon Japanese M2a-mega Dream EX 234 Pikachu EX Special Art Rare
-2025 Pokemon Japanese M2a-mega Dream EX 234 Pikachu EX Special Art Rare
+        <!-- Rental -->
+        <div class="thin-card p-4">
+          <div class="section-title">租車資訊</div>
+          <div class="rounded-2xl bg-slate-50 p-4">
+            <div class="text-base font-bold text-slate-800">{{ tripInfo.carRental.name }}</div>
+            <div class="text-sm text-slate-500 mt-1">{{ tripInfo.carRental.address }}</div>
+            <div class="text-sm text-slate-500 mt-1">電話：{{ tripInfo.carRental.phone }}</div>
+            <div class="text-sm text-slate-500 mt-1 whitespace-pre-line">{{ tripInfo.carRental.note }}</div>
+            <button class="mt-3 text-sm text-hydraDeep font-medium" @click="openMap(tripInfo.carRental)">導航到租車處</button>
+          </div>
+        </div>
 
-Quantity
-1
+        <!-- Emergency -->
+        <div class="thin-card p-4">
+          <div class="section-title">緊急醫療 / 緊急聯絡</div>
+          <div class="space-y-3">
+            <div class="rounded-2xl bg-slate-50 p-4 flex items-center justify-between">
+              <div>
+                <div class="font-semibold text-slate-700">警察</div>
+                <div class="text-sm text-slate-500">韓國緊急報警</div>
+              </div>
+              <a href="tel:112" class="text-hydraDeep font-semibold">112</a>
+            </div>
+            <div class="rounded-2xl bg-slate-50 p-4 flex items-center justify-between">
+              <div>
+                <div class="font-semibold text-slate-700">救護車 / 消防</div>
+                <div class="text-sm text-slate-500">韓國緊急醫療</div>
+              </div>
+              <a href="tel:119" class="text-hydraDeep font-semibold">119</a>
+            </div>
+            <div class="rounded-2xl bg-slate-50 p-4 flex items-center justify-between">
+              <div>
+                <div class="font-semibold text-slate-700">觀光翻譯熱線</div>
+                <div class="text-sm text-slate-500">旅遊查詢協助</div>
+              </div>
+              <a href="tel:1330" class="text-hydraDeep font-semibold">1330</a>
+            </div>
+          </div>
+        </div>
+      </section>
 
+      <!-- Shopping -->
+      <section v-if="activeTab === 'shopping'" class="pt-4">
+        <div class="grid grid-cols-2 gap-3">
+          <div v-for="item in shoppingList" :key="item.id" class="thin-card overflow-hidden">
+            <div class="aspect-square bg-slate-100 flex items-center justify-center overflow-hidden">
+              <img v-if="item.image" :src="item.image" class="w-full h-full object-cover" alt="">
+              <div v-else class="text-slate-300 text-sm">未上傳圖片</div>
+            </div>
+            <div class="p-3">
+              <div class="font-semibold text-slate-700">{{ item.name }}</div>
+              <div v-if="item.note" class="text-sm text-slate-500 mt-1">{{ item.note }}</div>
+              <div class="flex gap-3 mt-3">
+                <button class="text-sm text-hydraDeep font-medium" @click="editShopping(item)">編輯</button>
+                <button class="text-sm text-rose-400 font-medium" @click="deleteShopping(item.id)">刪除</button>
+              </div>
+            </div>
+          </div>
+        </div>
 
+        <div v-if="shoppingList.length === 0" class="thin-card p-6 text-center text-slate-400 mt-2">
+          暫時未有購物清單，按右下角 + 新增。
+        </div>
+      </section>
 
-2025 Pokemon Japanese M2a-mega Dream EX 237 Team Rocket's Mewtwo EX Special Art Rare
-2025 Pokemon Japanese M2a-mega Dream EX 237 Team Rocket's Mewtwo EX Special Art Rare
+      <!-- Expenses -->
+      <section v-if="activeTab === 'expenses'" class="pt-4 space-y-4">
+        <!-- top exchange block -->
+        <div class="thin-card p-4">
+          <div class="flex items-center justify-between gap-3">
+            <div>
+              <div class="text-sm font-semibold text-slate-700">匯率小工具</div>
+              <div class="small-note">輸入韓元，即時看到港幣</div>
+            </div>
+            <div class="text-right">
+              <div class="text-xs text-slate-400">1 KRW</div>
+              <div class="text-sm font-semibold text-slate-700">HK$ {{ exchangeRate.toFixed(5) }}</div>
+            </div>
+          </div>
 
-Quantity
-1
+          <div class="mt-3 grid grid-cols-2 gap-3">
+            <input type="number" class="input" v-model.number="krwInput" placeholder="輸入 KRW">
+            <div class="rounded-2xl bg-hydraSoft/45 p-3 flex items-center justify-center text-base font-semibold text-slate-800">
+              HK$ {{ convertKRWtoHKD(krwInput).toFixed(2) }}
+            </div>
+          </div>
+        </div>
 
+        <!-- total -->
+        <div class="thin-card p-4">
+          <div class="flex items-center justify-between">
+            <div>
+              <div class="text-xs text-slate-400">總花費</div>
+              <div class="text-2xl font-bold text-slate-800">₩ {{ totalExpenseKRW.toLocaleString() }}</div>
+            </div>
+            <div class="text-right">
+              <div class="text-xs text-slate-400">約港幣</div>
+              <div class="text-lg font-semibold text-slate-700">HK$ {{ totalExpenseHKD.toFixed(2) }}</div>
+            </div>
+          </div>
+        </div>
 
+        <!-- sub tabs -->
+        <div class="grid grid-cols-2 gap-2 bg-mist rounded-2xl p-1">
+          <button class="rounded-2xl py-2.5 text-sm font-medium"
+                  :class="expenseView==='records' ? 'bg-white text-hydraDeep shadow-sm' : 'text-slate-500'"
+                  @click="expenseView='records'">
+            花費紀錄
+          </button>
+          <button class="rounded-2xl py-2.5 text-sm font-medium"
+                  :class="expenseView==='settlement' ? 'bg-white text-hydraDeep shadow-sm' : 'text-slate-500'"
+                  @click="expenseView='settlement'">
+            分帳結算 💰
+          </button>
+        </div>
 
-2025 Pokemon Japanese M2a-mega Dream EX 242 N's Zoroark EX Special Art Rare
-2025 Pokemon Japanese M2a-mega Dream EX 242 N's Zoroark EX Special Art Rare
+        <!-- records -->
+        <div v-if="expenseView==='records'" class="space-y-3">
+          <div v-for="exp in expenses" :key="exp.id" class="thin-card p-4">
+            <div class="flex items-start justify-between gap-3">
+              <div>
+                <div class="flex items-center gap-2 flex-wrap">
+                  <div class="font-semibold text-slate-800">{{ exp.name }}</div>
+                  <span class="text-[11px] px-2 py-1 rounded-full bg-slate-100 text-slate-500">
+                    {{ exp.category }}
+                  </span>
+                </div>
+                <div class="text-sm text-slate-500 mt-1">{{ exp.date }}</div>
+                <div class="text-sm text-slate-500 mt-1">付款：{{ exp.payer }} / {{ exp.paymentMethod }}</div>
+                <div v-if="exp.note" class="text-sm text-slate-500 mt-1">{{ exp.note }}</div>
+                <div class="text-sm text-slate-500 mt-1">分攤者：{{ exp.participants.join('、') }}</div>
+              </div>
+              <div class="text-right shrink-0">
+                <div class="text-lg font-bold text-slate-800">₩ {{ Number(exp.amount).toLocaleString() }}</div>
+                <div class="text-xs text-slate-400 mt-1">HK$ {{ convertKRWtoHKD(Number(exp.amount)).toFixed(2) }}</div>
+                <div class="flex gap-3 mt-3 justify-end">
+                  <button class="text-sm text-hydraDeep font-medium" @click="editExpense(exp)">編輯</button>
+                  <button class="text-sm text-rose-400 font-medium" @click="deleteExpense(exp.id)">刪除</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div v-if="expenses.length===0" class="thin-card p-6 text-center text-slate-400">
+            暫時未有花費紀錄，按右下角 + 新增。
+          </div>
+        </div>
+
+        <!-- settlement -->
+        <div v-if="expenseView==='settlement'" class="space-y-3">
+          <div class="thin-card p-4">
+            <div class="section-title">分帳結果</div>
+            <div v-if="settlements.length === 0" class="text-sm text-slate-400">
+              目前未有可結算紀錄，或大家剛好已平均分攤。
+            </div>
+            <div v-else class="space-y-3">
+              <div v-for="(line, idx) in settlements" :key="idx" class="settlement-line rounded-2xl bg-slate-50 p-4">
+                <div class="text-sm text-slate-500">建議付款</div>
+                <div class="text-base font-semibold text-slate-800 mt-1">
+                  {{ line.from }} 應給 ➜ {{ line.to }}
+                </div>
+                <div class="text-lg font-bold text-hydraDeep mt-1">₩ {{ Math.round(line.amount).toLocaleString() }}</div>
+                <div class="text-xs text-slate-400 mt-1">約 HK$ {{ convertKRWtoHKD(line.amount).toFixed(2) }}</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="thin-card p-4">
+            <div class="section-title">淨額概覽</div>
+            <div class="space-y-2">
+              <div v-for="member in travelers" :key="member" class="flex items-center justify-between rounded-2xl bg-slate-50 px-4 py-3">
+                <div class="font-medium text-slate-700">{{ member }}</div>
+                <div :class="balanceMap[member] >= 0 ? 'text-emerald-600 font-semibold' : 'text-rose-500 font-semibold'">
+                  {{ balanceMap[member] >= 0 ? '+' : '' }}₩ {{ Math.round(balanceMap[member] || 0).toLocaleString() }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+   
+
+  </main>
+<div class="fixed-dogs-footer"></div>
+  <!-- FAB -->
+    <button v-if="activeTab==='itinerary'" class="floating-btn" @click="openAddItinerary()">＋</button>
+    <button v-if="activeTab==='shopping'" class="floating-btn" @click="openAddShopping()">＋</button>
+    <button v-if="activeTab==='expenses'" class="floating-btn" @click="openAddExpense()">＋</button>
+
+    <!-- Itinerary Modal -->
+    <div v-if="showItineraryModal" class="modal-mask" @click.self="closeItineraryModal()">
+      <div class="modal-card">
+        <div class="flex items-center justify-between mb-4">
+          <div class="text-lg font-semibold text-slate-800">{{ itineraryEditMode ? '編輯行程' : '新增行程' }}</div>
+          <button class="text-slate-400" @click="closeItineraryModal()">關閉</button>
+        </div>
+
+        <div class="space-y-3">
+          <div>
+            <label class="text-sm text-slate-500">分類</label>
+            <select class="input mt-1" v-model="itineraryForm.category">
+              <option value="spot">景點</option>
+              <option value="stay">住宿</option>
+              <option value="food">美食</option>
+              <option value="shopping">購物</option>
+              <option value="flight">航班</option>
+              <option value="other">其他</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="text-sm text-slate-500">名稱</label>
+            <input class="input mt-1" v-model="itineraryForm.name" placeholder="例如：咸德海灘">
+          </div>
+
+          <div>
+            <label class="text-sm text-slate-500">地址 / 搜尋字串</label>
+            <input class="input mt-1" v-model="itineraryForm.address" placeholder="點擊卡片時會用作 Google Maps 導航">
+          </div>
+
+          <div v-if="itineraryForm.category==='flight'">
+            <label class="text-sm text-slate-500">航線 / 顯示內容</label>
+            <input class="input mt-1" v-model="itineraryForm.route" placeholder="例如：香港國際機場 → 濟州國際機場">
+          </div>
+
+          <div v-if="itineraryForm.category==='flight'">
+            <label class="text-sm text-slate-500">航班編號</label>
+            <input class="input mt-1" v-model="itineraryForm.flightNo" placeholder="例如：UO689">
+          </div>
+
+          <div v-if="itineraryForm.category!=='flight'">
+            <label class="text-sm text-slate-500">營業時間</label>
+            <input class="input mt-1" v-model="itineraryForm.hours" placeholder="例如：09:00–18:00">
+          </div>
+
+          <div v-if="itineraryForm.category==='spot'">
+            <label class="text-sm text-slate-500">門票</label>
+            <input class="input mt-1" v-model="itineraryForm.ticket" placeholder="例如：免費 / ₩12,000">
+          </div>
+
+          <div>
+            <label class="text-sm text-slate-500">交通方式（顯示於前一個行程與這個行程之間）</label>
+            <select class="input mt-1" v-model="itineraryForm.travelMode">
+              <option value="DRIVING">開車</option>
+              <option value="WALKING">步行</option>
+              <option value="TRANSIT">大眾運輸</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="text-sm text-slate-500">交通時間（可手動填寫，例如：約 15 分鐘）</label>
+            <input class="input mt-1" v-model="itineraryForm.manualTravelText" placeholder="例如：約 15 分鐘">
+          </div>
+
+          <div>
+            <label class="text-sm text-slate-500">特色 / 備註</label>
+            <textarea class="input textarea mt-1" v-model="itineraryForm.note" placeholder="例如：必食：龍蝦紫菜包飯"></textarea>
+          </div>
+        </div>
+
+        <div class="flex gap-3 mt-6">
+          <button class="flex-1 rounded-2xl py-3 bg-hydraDeep text-white font-semibold" @click="saveItinerary">
+            儲存
+          </button>
+          <button v-if="itineraryEditMode"
+                  class="rounded-2xl px-4 py-3 bg-rose-50 text-rose-500 font-semibold"
+                  @click="confirmDeleteItinerary">
+            刪除
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Shopping Modal -->
+    <div v-if="showShoppingModal" class="modal-mask" @click.self="closeShoppingModal()">
+      <div class="modal-card">
+        <div class="flex items-center justify-between mb-4">
+          <div class="text-lg font-semibold text-slate-800">{{ shoppingEditMode ? '編輯購物清單' : '新增購物清單' }}</div>
+          <button class="text-slate-400" @click="closeShoppingModal()">關閉</button>
+        </div>
+
+        <div class="space-y-3">
+          <div>
+            <label class="text-sm text-slate-500">商品名稱</label>
+            <input class="input mt-1" v-model="shoppingForm.name" placeholder="例如：濟州島限定手信">
+          </div>
+          <div>
+            <label class="text-sm text-slate-500">備註</label>
+            <textarea class="input textarea mt-1" v-model="shoppingForm.note" placeholder="可寫店名、想買數量等"></textarea>
+          </div>
+          <div>
+            <label class="text-sm text-slate-500">商品圖片</label>
+            <input type="file" accept="image/*" class="input mt-1" @change="handleShoppingImageUpload">
+          </div>
+          <div v-if="shoppingForm.image" class="rounded-2xl overflow-hidden border border-slate-100">
+            <img :src="shoppingForm.image" class="w-full h-48 object-cover" alt="">
+          </div>
+        </div>
+
+        <div class="flex gap-3 mt-6">
+          <button class="flex-1 rounded-2xl py-3 bg-hydraDeep text-white font-semibold" @click="saveShopping">
+            儲存
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Expense Modal -->
+    <div v-if="showExpenseModal" class="modal-mask" @click.self="closeExpenseModal()">
+      <div class="modal-card">
+        <div class="flex items-center justify-between mb-4">
+          <div class="text-lg font-semibold text-slate-800">{{ expenseEditMode ? '編輯花費' : '新增花費' }}</div>
+          <button class="text-slate-400" @click="closeExpenseModal()">關閉</button>
+        </div>
+
+        <div class="space-y-3">
+          <div>
+            <label class="text-sm text-slate-500">類別</label>
+            <select class="input mt-1" v-model="expenseForm.category">
+              <option>交通</option>
+              <option>飲食</option>
+              <option>住宿</option>
+              <option>門票</option>
+              <option>購物</option>
+              <option>其他</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="text-sm text-slate-500">名稱</label>
+            <input class="input mt-1" v-model="expenseForm.name" placeholder="例如：晚餐">
+          </div>
+
+          <div>
+            <label class="text-sm text-slate-500">日期</label>
+            <input type="date" class="input mt-1" v-model="expenseForm.date">
+          </div>
+
+          <div>
+            <label class="text-sm text-slate-500">金額（KRW）</label>
+            <input type="number" class="input mt-1" v-model.number="expenseForm.amount" placeholder="例如：25000">
+          </div>
+
+          <div>
+            <label class="text-sm text-slate-500">付款方式</label>
+            <select class="input mt-1" v-model="expenseForm.paymentMethod">
+              <option>現金</option>
+              <option>信用卡</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="text-sm text-slate-500">是誰先墊錢</label>
+            <select class="input mt-1" v-model="expenseForm.payer">
+              <option v-for="member in travelers" :key="member" :value="member">{{ member }}</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="text-sm text-slate-500">一起分攤的人</label>
+            <div class="grid grid-cols-2 gap-2 mt-2">
+              <label v-for="member in travelers" :key="member" class="rounded-2xl border border-slate-200 px-3 py-2 flex items-center gap-2">
+                <input type="checkbox" :value="member" v-model="expenseForm.participants">
+                <span class="text-sm text-slate-600">{{ member }}</span>
+              </label>
+            </div>
+          </div>
+
+          <div>
+            <label class="text-sm text-slate-500">備註</label>
+            <textarea class="input textarea mt-1" v-model="expenseForm.note" placeholder="可選填"></textarea>
+          </div>
+        </div>
+
+        <div class="flex gap-3 mt-6">
+          <button class="flex-1 rounded-2xl py-3 bg-hydraDeep text-white font-semibold" @click="saveExpense">
+            儲存
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vue -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+
+  <script>
+    const { createApp } = Vue;
+
+    createApp({
+      data() {
+        return {
+          activeTab: 'itinerary',
+          selectedDayIndex: 0,
+          dragIndex: null,
+
+          krwInput: 10000,
+          exchangeRate: 0.0055,
+
+          weather: {
+            loading: true,
+            error: false,
+            icon: '☀️',
+            label: '晴',
+            temp: '--',
+            feels: '--'
+          },
+
+          travelers: ['Lisa', 'Katie', 'kathryn青姐', '蚊蚊', 'Ryan'],
+
+          tripInfo: {
+            flights: [
+              {
+                type: '去程',
+                date: '2026-05-26',
+                fromCode: 'HKG',
+                toCode: 'CJU',
+                from: '香港國際機場客運大樓',
+                to: '濟州國際機場',
+                depart: '待補',
+                arrive: '待補',
+                duration: '待補',
+                flightNo: 'UO689'
+              },
+              {
+                type: '回程',
+                date: '2026-05-30',
+                fromCode: 'CJU',
+                toCode: 'HKG',
+                from: '濟州國際機場',
+                to: '香港國際機場客運大樓 1',
+                depart: '待補',
+                arrive: '待補',
+                duration: '待補',
+                flightNo: 'UO699'
+              }
+            ],
+            stays: [
+              {
+                id: 1,
+                date: '26–27/5/2026',
+                name: 'Airbnb',
+                address: '38 Woljeong 5-gil 월정5길 38-8 스테이숨길, Cheju, 濟州省 63358, 南韓'
+              },
+              {
+                id: 2,
+                date: '27–28/5/2026',
+                name: 'Airbnb 스테이묘해',
+                address: '제주 서귀포시 산성효자로 95-7'
+              },
+              {
+                id: 3,
+                date: '28–29/5/2026',
+                name: 'Airbnb 댕유지낭',
+                address: '제주 제주시 납읍로2길 21'
+              },
+              {
+                id: 4,
+                date: '29–30/5/2026',
+                name: '濟州島麗晶海洋酒店',
+                address: '濟州島麗晶海洋酒店（待補完整地址）'
+              }
+            ],
+            carRental: {
+              name: '牛島租車（待補租車公司名稱）',
+              address: '天津港附近取車',
+              phone: '待補',
+              note: '你目前提供的是「天津港 落船租車」，如之後有確定租車公司名稱、電話及地址，可直接在程式資料內更新。'
+            }
+          },
+
+          days: [
+            {
+              date: '2026-05-26',
+              weekShort: 'Tue',
+              dayNum: '26',
+              shortDate: '5月',
+              title: 'Day 1',
+              fullDateLabel: '26/5 星期二',
+              items: [
+                {
+                  id: 101,
+                  category: 'flight',
+                  name: '去程航班',
+                  route: '香港國際機場客運大樓 → 濟州國際機場',
+                  flightNo: 'UO689',
+                  address: '濟州國際機場',
+                  note: '抵達濟州後開始自駕行程'
+                },
+                {
+                  id: 102,
+                  category: 'spot',
+                  name: '梨湖紅白馬燈塔',
+                  address: '제주 제주시 이호일동 374-1',
+                  hours: '',
+                  ticket: '免費',
+                  note: '',
+                  travelMode: 'DRIVING',
+                  manualTravelText: '約 15 分鐘'
+                },
+                {
+                  id: 103,
+                  category: 'shopping',
+                  name: '귤귤스토어 彩虹海岸文創店',
+                  address: '제주무지개해안도로',
+                  note: '彩虹海岸公路',
+                  travelMode: 'DRIVING',
+                  manualTravelText: '約 5 分鐘'
+                },
+                {
+                  id: 104,
+                  category: 'spot',
+                  name: '용두암 龍頭岩',
+                  address: '용두암',
+                  ticket: '免費',
+                  note: '',
+                  travelMode: 'DRIVING',
+                  manualTravelText: '約 10 分鐘'
+                },
+                {
+                  id: 105,
+                  category: 'food',
+                  name: '휴즐리 제주🍊柑橘雪糕',
+                  address: '휴즐리 제주',
+                  note: '',
+                  travelMode: 'WALKING',
+                  manualTravelText: '附近步行可達'
+                },
+                {
+                  id: 106,
+                  category: 'food',
+                  name: '오드랑베이커리 함덕점',
+                  address: '제주특별자치도 제주시 조천읍 조함해안로 552-3',
+                  hours: '每日 7am - 10pm',
+                  note: '蒜泥法師麵包 Audrant Bakery',
+                  travelMode: 'DRIVING',
+                  manualTravelText: '自駕前往'
+                },
+                {
+                  id: 107,
+                  category: 'spot',
+                  name: '함덕해수욕장 咸德海灘',
+                  address: '함덕해수욕장',
+                  ticket: '免費',
+                  note: '',
+                  travelMode: 'DRIVING',
+                  manualTravelText: '自駕前往'
+                },
+                {
+                  id: 108,
+                  category: 'food',
+                  name: '해녀김밥 본점 海女飯卷',
+                  address: '해녀김밥 본점',
+                  hours: '9am - 5pm',
+                  note: '電話：0507-1342-3005\n必食：龍蝦紫菜包飯',
+                  travelMode: 'WALKING',
+                  manualTravelText: '附近步行可達'
+                },
+                {
+                  id: 109,
+                  category: 'food',
+                  name: '런던베이글뮤지엄 제주 London bagel',
+                  address: '런던베이글뮤지엄 제주',
+                  note: '',
+                  travelMode: 'DRIVING',
+                  manualTravelText: '自駕前往'
+                },
+                {
+                  id: 110,
+                  category: 'shopping',
+                  name: '블루엘리펀트 스페이스 제주 Blue elephant',
+                  address: '블루엘리펀트 스페이스 제주',
+                  note: '',
+                  travelMode: 'WALKING',
+                  manualTravelText: '附近可步行'
+                },
+                {
+                  id: 111,
+                  category: 'spot',
+                  name: '월정리해수욕장 月汀里海灘',
+                  address: '월정리해수욕장',
+                  ticket: '免費',
+                  note: '',
+                  travelMode: 'DRIVING',
+                  manualTravelText: '自駕前往'
+                },
+                {
+                  id: 112,
+                  category: 'food',
+                  name: '몽그레 월정리점',
+                  address: '몽그레 월정리점',
+                  note: '雲朵 cookie ☁️',
+                  travelMode: 'WALKING',
+                  manualTravelText: '附近步行可達'
+                },
+                {
+                  id: 113,
+                  category: 'food',
+                  name: '머문 베이커리카페 Cafe Mou Moon',
+                  address: '머문 베이커리카페',
+                  note: '',
+                  travelMode: 'WALKING',
+                  manualTravelText: '附近步行可達'
+                },
+                {
+                  id: 114,
+                  category: 'food',
+                  name: '晚餐：명진전복 明珍鮑魚',
+                  address: '명진전복',
+                  note: '',
+                  travelMode: 'DRIVING',
+                  manualTravelText: '自駕前往'
+                }
+              ]
+            },
+            {
+              date: '2026-05-27',
+              weekShort: 'Wed',
+              dayNum: '27',
+              shortDate: '5月',
+              title: 'Day 2',
+              fullDateLabel: '27/5 星期三',
+              items: [
+                {
+                  id: 201,
+                  category: 'other',
+                  name: '牛島上船 성산포항종합여객터미널',
+                  address: '제주 서귀포시 성산등용로 112-7',
+                  note: 'https://naver.me/FNIz5Vhr',
+                  travelMode: 'DRIVING',
+                  manualTravelText: '由前一晚住宿出發'
+                },
+                {
+                  id: 202,
+                  category: 'other',
+                  name: '天津港 落船租車',
+                  address: '天津港 落船租車',
+                  note: '',
+                  travelMode: 'WALKING',
+                  manualTravelText: '落船後前往租車'
+                },
+                {
+                  id: 203,
+                  category: 'spot',
+                  name: '白沙灘 / 黑沙灘',
+                  address: '우도 백사장',
+                  ticket: '免費',
+                  note: '',
+                  travelMode: 'DRIVING',
+                  manualTravelText: '自駕前往'
+                },
+                {
+                  id: 204,
+                  category: 'spot',
+                  name: '白色燈塔',
+                  address: '우도 등대',
+                  ticket: '免費',
+                  note: '',
+                  travelMode: 'DRIVING',
+                  manualTravelText: '自駕前往'
+                },
+                {
+                  id: 205,
+                  category: 'spot',
+                  name: '牛島油菜花田 + 斜坡位',
+                  address: '우도 유채꽃밭',
+                  ticket: '免費',
+                  note: '',
+                  travelMode: 'DRIVING',
+                  manualTravelText: '自駕前往'
+                },
+                {
+                  id: 206,
+                  category: 'shopping',
+                  name: '제주규리 手信',
+                  address: '제주 제주시 우도해안길 774',
+                  hours: '4:30pm close',
+                  note: '',
+                  travelMode: 'DRIVING',
+                  manualTravelText: '自駕前往'
+                },
+                {
+                  id: 207,
+                  category: 'food',
+                  name: '牛島 飛揚島 blanc Rocher 블랑로쉐',
+                  address: '제주 제주시 우도해안길 783 1층',
+                  hours: '5pm close',
+                  note: '',
+                  travelMode: 'DRIVING',
+                  manualTravelText: '自駕前往'
+                },
+                {
+                  id: 208,
+                  category: 'food',
+                  name: '牛島餅乾 Peanut icecream',
+                  address: '원조우도샌드본점피너트 / 제주 제주시 우도해안길 788 피너트',
+                  note: '',
+                  travelMode: 'WALKING',
+                  manualTravelText: '附近可達'
+                },
+                {
+                  id: 209,
+                  category: 'shopping',
+                  name: 'UDOI 우도i 手信店',
+                  address: '제주 제주시 우도해안길 792 1층',
+                  note: '',
+                  travelMode: 'WALKING',
+                  manualTravelText: '附近可達'
+                },
+                {
+                  id: 210,
+                  category: 'food',
+                  name: '牛島 海女之家',
+                  address: '우도물들이 해녀의집 / 제주 제주시 우도해안길 572',
+                  note: '',
+                  travelMode: 'DRIVING',
+                  manualTravelText: '自駕前往'
+                },
+                {
+                  id: 211,
+                  category: 'spot',
+                  name: '성산일출봉 주차장 城山日出峰',
+                  address: '제주 서귀포시 성산읍 성산리 1',
+                  ticket: '免費路線：左邊往海 / 收費路線：右邊攻頂',
+                  note: '世界自然遺產\n攻頂約 30 分鐘',
+                  travelMode: 'DRIVING',
+                  manualTravelText: '自駕前往'
+                },
+                {
+                  id: 212,
+                  category: 'food',
+                  name: '晚餐：온평바다한그릇',
+                  address: '온평바다한그릇',
+                  hours: '21:30 last order',
+                  note: '一碗溫平的大海',
+                  travelMode: 'DRIVING',
+                  manualTravelText: '自駕前往'
+                }
+              ]
+            },
+            {
+              date: '2026-05-28',
+              weekShort: 'Thu',
+              dayNum: '28',
+              shortDate: '5月',
+              title: 'Day 3',
+              fullDateLabel: '28/5 星期四',
+              items: [
+                {
+                  id: 301,
+                  category: 'spot',
+                  name: 'Saebyeol Friends 새별프렌즈',
+                  address: '제주시 애월읍 봉성리 4554-20',
+                  hours: '09:00-17:00',
+                  ticket: '',
+                  note: '',
+                  travelMode: 'DRIVING',
+                  manualTravelText: '由前一晚住宿出發'
+                },
+                {
+                  id: 302,
+                  category: 'spot',
+                  name: '山茶花之丘 카멜리아힐',
+                  address: '카멜리아힐',
+                  hours: '春、秋季 08:30–18:30',
+                  ticket: '',
+                  note: '入場時間至閉園前 1 小時為止',
+                  travelMode: 'DRIVING',
+                  manualTravelText: '自駕前往'
+                },
+                {
+                  id: 303,
+                  category: 'spot',
+                  name: '한담해변 漢潭海邊',
+                  address: '한담해변',
+                  ticket: '免費',
+                  note: '',
+                  travelMode: 'DRIVING',
+                  manualTravelText: '自駕前往'
+                },
+                {
+                  id: 304,
+                  category: 'food',
+                  name: '봄날 春日Cafe',
+                  address: '봄날',
+                  note: '',
+                  travelMode: 'WALKING',
+                  manualTravelText: '附近可步行'
+                },
+                {
+                  id: 305,
+                  category: 'food',
+                  name: '트라이브 Tribe',
+                  address: '제주 제주시 애월로 11',
+                  hours: '20:30 last order',
+                  note: '涯月邑梳乎厘',
+                  travelMode: 'WALKING',
+                  manualTravelText: '附近可步行'
+                },
+                {
+                  id: 306,
+                  category: 'food',
+                  name: 'Haejigae Cafe 해지개 카페',
+                  address: '해지개 카페',
+                  hours: '09:00-21:00',
+                  note: '日落靚景',
+                  travelMode: 'DRIVING',
+                  manualTravelText: '自駕前往'
+                },
+                {
+                  id: 307,
+                  category: 'food',
+                  name: '랜디스도넛 제주애월점 Randy donut',
+                  address: '랜디스도넛 제주애월점',
+                  note: '',
+                  travelMode: 'WALKING',
+                  manualTravelText: '附近可步行'
+                },
+                {
+                  id: 308,
+                  category: 'food',
+                  name: '제주플로웨이브카페 落火cafe',
+                  address: '제주플로웨이브카페',
+                  hours: '4pm-10pm',
+                  note: '',
+                  travelMode: 'DRIVING',
+                  manualTravelText: '自駕前往'
+                },
+                {
+                  id: 309,
+                  category: 'food',
+                  name: '晚餐：涯月邑海邊任何一間',
+                  address: '애월',
+                  note: '',
+                  travelMode: 'DRIVING',
+                  manualTravelText: '自駕前往'
+                }
+              ]
+            },
+            {
+              date: '2026-05-29',
+              weekShort: 'Fri',
+              dayNum: '29',
+              shortDate: '5月',
+              title: 'Day 4',
+              fullDateLabel: '29/5 星期五',
+              items: [
+                {
+                  id: 401,
+                  category: 'food',
+                  name: 'Noraba 노라바 海鮮麵',
+                  address: '노라바',
+                  hours: '10:00-14:00 / 15:00-16:30',
+                  note: '',
+                  travelMode: 'DRIVING',
+                  manualTravelText: '由前一晚住宿出發'
+                },
+                {
+                  id: 402,
+                  category: 'spot',
+                  name: '濟州市區 Citywalk',
+                  address: '제주시 시내',
+                  ticket: '免費',
+                  note: '',
+                  travelMode: 'DRIVING',
+                  manualTravelText: '自駕前往'
+                },
+                {
+                  id: 403,
+                  category: 'food',
+                  name: '麥芽餅 모찌롱 Mojjirong',
+                  address: '제주 제주시 관덕로6길 12',
+                  note: '',
+                  travelMode: 'WALKING',
+                  manualTravelText: '步行前往'
+                },
+                {
+                  id: 404,
+                  category: 'food',
+                  name: '우무 UMU pudding',
+                  address: '제주 제주시 관덕로8길 40-1',
+                  hours: '9am 開門',
+                  note: '',
+                  travelMode: 'WALKING',
+                  manualTravelText: '步行前往'
+                },
+                {
+                  id: 405,
+                  category: 'shopping',
+                  name: '七星購物街',
+                  address: '칠성로쇼핑타운',
+                  note: '',
+                  travelMode: 'WALKING',
+                  manualTravelText: '步行前往'
+                },
+                {
+                  id: 406,
+                  category: 'shopping',
+                  name: 'Olive young',
+                  address: '올리브영 제주',
+                  note: '',
+                  travelMode: 'WALKING',
+                  manualTravelText: '步行前往'
+                },
+                {
+                  id: 407,
+                  category: 'shopping',
+                  name: 'The islander 獨特香味店',
+                  address: '제주 제주시 관덕로4길 7 더 아일랜더',
+                  note: '',
+                  travelMode: 'WALKING',
+                  manualTravelText: '步行前往'
+                },
+                {
+                  id: 408,
+                  category: 'shopping',
+                  name: '플라네하우스 제주소품샵',
+                  address: '제주 제주시 관덕로11길 28 플라네하우스 제주소품샵',
+                  note: '貝殼碟 + 靚廚具',
+                  travelMode: 'WALKING',
+                  manualTravelText: '步行前往'
+                },
+                {
+                  id: 409,
+                  category: 'shopping',
+                  name: 'Welcome Jeju 手信店',
+                  address: 'Welcome Jeju',
+                  note: '',
+                  travelMode: 'WALKING',
+                  manualTravelText: '步行前往'
+                },
+                {
+                  id: 410,
+                  category: 'shopping',
+                  name: '樂天超市',
+                  address: '롯데마트 제주',
+                  note: '',
+                  travelMode: 'DRIVING',
+                  manualTravelText: '自駕前往'
+                },
+                {
+                  id: 411,
+                  category: 'shopping',
+                  name: '新羅免稅',
+                  address: '신라면세점 제주점',
+                  note: '',
+                  travelMode: 'DRIVING',
+                  manualTravelText: '自駕前往'
+                },
+                {
+                  id: 412,
+                  category: 'food',
+                  name: '晚餐：숙성도 제주본점',
+                  address: '숙성도 제주본점',
+                  hours: '21:00 last order',
+                  note: '熟成到',
+                  travelMode: 'DRIVING',
+                  manualTravelText: '自駕前往'
+                },
+                {
+                  id: 413,
+                  category: 'shopping',
+                  name: '東門市場',
+                  address: '동문시장',
+                  note: '',
+                  travelMode: 'DRIVING',
+                  manualTravelText: '自駕前往'
+                },
+                {
+                  id: 414,
+                  category: 'other',
+                  name: '21:00 前還車',
+                  address: '租車處',
+                  note: '',
+                  travelMode: 'DRIVING',
+                  manualTravelText: '前往還車'
+                }
+              ]
+            },
+            {
+              date: '2026-05-30',
+              weekShort: 'Sat',
+              dayNum: '30',
+              shortDate: '5月',
+              title: 'Day 5',
+              fullDateLabel: '30/5 星期六',
+              items: [
+                {
+                  id: 501,
+                  category: 'flight',
+                  name: '回程航班',
+                  route: '濟州國際機場 → 香港國際機場客運大樓 1',
+                  flightNo: 'UO699',
+                  address: '濟州國際機場',
+                  note: '07:30 ✈️ 翻香港'
+                }
+              ]
+            }
+          ],
+
+          shoppingList: [],
+          expenses: [],
+
+          showItineraryModal: false,
+          itineraryEditMode: false,
+          itineraryEditIndex: null,
+          itineraryForm: {
+            category: 'spot',
+            name: '',
+            address: '',
+            route: '',
+            flightNo: '',
+            hours: '',
+            ticket: '',
+            note: '',
+            travelMode: 'DRIVING',
+            manualTravelText: ''
+          },
+
+          showShoppingModal: false,
+          shoppingEditMode: false,
+          shoppingForm: {
+            id: null,
+            name: '',
+            note: '',
+            image: ''
+          },
+
+          showExpenseModal: false,
+          expenseEditMode: false,
+          expenseForm: {
+            id: null,
+            category: '飲食',
+            name: '',
+            date: '2026-05-26',
+            amount: '',
+            paymentMethod: '信用卡',
+            payer: 'Lisa',
+            participants: ['Lisa', 'Katie', 'Mocha', 'Cotton', '多多'],
+            note: ''
+          }
+        }
+      },
+
+      computed: {
+        selectedDay() {
+          return this.days[this.selectedDayIndex];
+        },
+        totalExpenseKRW() {
+          return this.expenses.reduce((sum, item) => sum + Number(item.amount || 0), 0);
+        },
+        totalExpenseHKD() {
+          return this.totalExpenseKRW * this.exchangeRate;
+        },
+        balanceMap() {
+          const balances = {};
+          this.travelers.forEach(name => balances[name] = 0);
+
+          this.expenses.forEach(exp => {
+            const amount = Number(exp.amount || 0);
+            const participants = exp.participants || [];
+            if (!amount || participants.length === 0) return;
+
+            const share = amount / participants.length;
+
+            participants.forEach(p => {
+              balances[p] -= share;
+            });
+
+            balances[exp.payer] += amount;
+          });
+
+          return balances;
+        },
+        settlements() {
+          const balances = JSON.parse(JSON.stringify(this.balanceMap));
+          const debtors = [];
+          const creditors = [];
+
+          Object.keys(balances).forEach(name => {
+            const amt = Math.round(balances[name]);
+            if (amt < 0) debtors.push({ name, amount: -amt });
+            if (amt > 0) creditors.push({ name, amount: amt });
+          });
+
+          const result = [];
+          let i = 0, j = 0;
+
+          while (i < debtors.length && j < creditors.length) {
+            const pay = Math.min(debtors[i].amount, creditors[j].amount);
+            result.push({
+              from: debtors[i].name,
+              to: creditors[j].name,
+              amount: pay
+            });
+
+            debtors[i].amount -= pay;
+            creditors[j].amount -= pay;
+
+            if (debtors[i].amount === 0) i++;
+            if (creditors[j].amount === 0) j++;
+          }
+
+          return result;
+        }
+      },
+
+      methods: {
+      // 🔮 【大核心二】：當點擊任何修改、新增、刪除時，將最新狀態寫入 Firebase
+        async saveAll() {
+          try {
+            const docRef = doc(db, "trips", "jeju_trip_2026");
+            
+            // 💖 終極防卡頓大絕招：用 JSON 把它洗成最單純、沒包袱的格式！
+            const cleanData = JSON.parse(JSON.stringify({
+              days: this.days,
+              shoppingList: this.shoppingList,
+              expenses: this.expenses,
+              tripInfo: this.tripInfo
+            }));
+
+            // 把洗乾淨的輕量資料丟給 Firebase，瞬間秒傳！
+            await setDoc(docRef, cleanData);
+            
+            console.log("最新狀態已極速、滑順地備份至 Firebase 雲端！🚀");
+          } catch (error) {
+            console.error("無法儲存至 Firebase 雲端🥺: ", error);
+          }
+        },
+
+        loadSavedData() {
+          const raw = localStorage.getItem('jejuTripAppData');
+          if (!raw) return;
+          try {
+            const parsed = JSON.parse(raw);
+            if (parsed.activeTab) this.activeTab = parsed.activeTab;
+            if (typeof parsed.selectedDayIndex === 'number') this.selectedDayIndex = parsed.selectedDayIndex;
+            if (typeof parsed.krwInput !== 'undefined') this.krwInput = parsed.krwInput;
+            if (Array.isArray(parsed.days)) this.days = parsed.days;
+            if (Array.isArray(parsed.shoppingList)) this.shoppingList = parsed.shoppingList;
+            if (Array.isArray(parsed.expenses)) this.expenses = parsed.expenses;
+          } catch (e) {
+            console.error('讀取 localStorage 失敗', e);
+          }
+        },
+
+        categoryLabel(cat) {
+          const map = {
+            spot: '景點',
+            stay: '住宿',
+            food: '美食',
+            shopping: '購物',
+            flight: '航班',
+            other: '其他'
+          };
+          return map[cat] || '其他';
+        },
+
+        categoryEmoji(cat) {
+          const map = {
+            spot: '📍',
+            stay: '🏨',
+            food: '🍽️',
+            shopping: '🛍️',
+            flight: '✈️',
+            other: '🗂️'
+          };
+          return map[cat] || '📍';
+        },
+
+        categoryColor(cat) {
+          const map = {
+            spot: 'bg-hydraSoft',
+            stay: 'bg-mint',
+            food: 'bg-blush',
+            shopping: 'bg-sand',
+            flight: 'bg-hydraSoft',
+            other: 'bg-slate-100'
+          };
+          return map[cat] || 'bg-slate-100';
+        },
+
+        openMap(item) {
+          const q = encodeURIComponent(item.address || item.name || '');
+          if (!q) return;
+          const url = `https://www.google.com/maps/search/?api=1&query=${q}`;
+          window.open(url, '_blank');
+        },
+
+        convertKRWtoHKD(krw) {
+          const value = Number(krw || 0);
+          return value * this.exchangeRate;
+        },
+
+        async fetchExchangeRate() {
+          try {
+            const res = await fetch('https://api.frankfurter.app/latest?from=KRW&to=HKD');
+            const data = await res.json();
+            if (data && data.rates && data.rates.HKD) {
+              this.exchangeRate = Number(data.rates.HKD);
+            }
+          } catch (e) {
+            console.error('匯率抓取失敗，改用預設值', e);
+          }
+        },
+
+        weatherText(code) {
+          if ([0].includes(code)) return { icon: '☀️', label: '晴' };
+          if ([1,2].includes(code)) return { icon: '⛅', label: '多雲' };
+          if ([3].includes(code)) return { icon: '☁️', label: '陰天' };
+          if ([45,48].includes(code)) return { icon: '🌫️', label: '有霧' };
+          if ([51,53,55,61,63,65,80,81,82].includes(code)) return { icon: '🌧️', label: '下雨' };
+          if ([71,73,75,77,85,86].includes(code)) return { icon: '❄️', label: '下雪' };
+          if ([95,96,99].includes(code)) return { icon: '⛈️', label: '雷雨' };
+          return { icon: '⛅', label: '天氣' };
+        },
+
+        async fetchWeather() {
+          this.weather.loading = true;
+          this.weather.error = false;
+          try {
+            const url = 'https://api.open-meteo.com/v1/forecast?latitude=33.4996&longitude=126.5312&current=temperature_2m,apparent_temperature,weather_code';
+            const res = await fetch(url);
+            const data = await res.json();
+            const current = data.current;
+            const mapped = this.weatherText(current.weather_code);
+
+            this.weather = {
+              loading: false,
+              error: false,
+              icon: mapped.icon,
+              label: mapped.label,
+              temp: current.temperature_2m,
+              feels: current.apparent_temperature
+            };
+          } catch (e) {
+            this.weather.loading = false;
+            this.weather.error = true;
+            console.error('抓取天氣失敗', e);
+          }
+        },
+
+        dragStart(index) {
+          this.dragIndex = index;
+        },
+
+        dropOn(index) {
+          if (this.dragIndex === null || this.dragIndex === index) return;
+          const list = this.selectedDay.items;
+          const moved = list.splice(this.dragIndex, 1)[0];
+          list.splice(index, 0, moved);
+          this.dragIndex = null;
+          this.saveAll();
+        },
+
+        openAddItinerary() {
+          this.itineraryEditMode = false;
+          this.itineraryEditIndex = null;
+          this.itineraryForm = {
+            category: 'spot',
+            name: '',
+            address: '',
+            route: '',
+            flightNo: '',
+            hours: '',
+            ticket: '',
+            note: '',
+            travelMode: 'DRIVING',
+            manualTravelText: ''
+          };
+          this.showItineraryModal = true;
+        },
+
+        editItinerary(item, index) {
+          this.itineraryEditMode = true;
+          this.itineraryEditIndex = index;
+          this.itineraryForm = JSON.parse(JSON.stringify(item));
+          this.showItineraryModal = true;
+        },
+
+        saveItinerary() {
+          if (!this.itineraryForm.name) {
+            alert('請先填寫名稱');
+            return;
+          }
+
+          const payload = {
+            id: this.itineraryForm.id || Date.now(),
+            category: this.itineraryForm.category || 'spot',
+            name: this.itineraryForm.name || '',
+            address: this.itineraryForm.address || '',
+            route: this.itineraryForm.route || '',
+            flightNo: this.itineraryForm.flightNo || '',
+            hours: this.itineraryForm.hours || '',
+            ticket: this.itineraryForm.ticket || '',
+            note: this.itineraryForm.note || '',
+            travelMode: this.itineraryForm.travelMode || 'DRIVING',
+            manualTravelText: this.itineraryForm.manualTravelText || ''
+          };
+
+          if (this.itineraryEditMode && this.itineraryEditIndex !== null) {
+            this.selectedDay.items.splice(this.itineraryEditIndex, 1, payload);
+          } else {
+            this.selectedDay.items.push(payload);
+          }
+
+          this.closeItineraryModal();
+          this.saveAll();
+        },
+
+        confirmDeleteItinerary() {
+          if (!confirm('確定要刪除這個行程嗎？')) return;
+          if (this.itineraryEditIndex !== null) {
+            this.selectedDay.items.splice(this.itineraryEditIndex, 1);
+          }
+          this.closeItineraryModal();
+          this.saveAll();
+        },
+
+        closeItineraryModal() {
+          this.showItineraryModal = false;
+          this.itineraryEditMode = false;
+          this.itineraryEditIndex = null;
+        },
+
+        openAddShopping() {
+          this.shoppingEditMode = false;
+          this.shoppingForm = {
+            id: null,
+            name: '',
+            note: '',
+            image: ''
+          };
+          this.showShoppingModal = true;
+        },
+
+        editShopping(item) {
+          this.shoppingEditMode = true;
+          this.shoppingForm = JSON.parse(JSON.stringify(item));
+          this.showShoppingModal = true;
+        },
+
+        handleShoppingImageUpload(event) {
+          const file = event.target.files[0];
+          if (!file) return;
+          const reader = new FileReader();
+          reader.onload = (e) => {
+            this.shoppingForm.image = e.target.result;
+          };
+          reader.readAsDataURL(file);
+        },
+
+        saveShopping() {
+          if (!this.shoppingForm.name) {
+            alert('請先填寫商品名稱');
+            return;
+          }
+
+          if (this.shoppingEditMode) {
+            const idx = this.shoppingList.findIndex(x => x.id === this.shoppingForm.id);
+            if (idx > -1) this.shoppingList.splice(idx, 1, { ...this.shoppingForm });
+          } else {
+            this.shoppingList.push({
+              ...this.shoppingForm,
+              id: Date.now()
+            });
+          }
+
+          this.closeShoppingModal();
+          this.saveAll();
+        },
+
+        deleteShopping(id) {
+          if (!confirm('確定刪除這個購物清單項目？')) return;
+          this.shoppingList = this.shoppingList.filter(x => x.id !== id);
+          this.saveAll();
+        },
+
+        closeShoppingModal() {
+          this.showShoppingModal = false;
+          this.shoppingEditMode = false;
+        },
+
+        openAddExpense() {
+          this.expenseEditMode = false;
+          this.expenseForm = {
+            id: null,
+            category: '飲食',
+            name: '',
+            date: this.selectedDay ? this.selectedDay.date : '2026-05-26',
+            amount: '',
+            paymentMethod: '信用卡',
+            payer: this.travelers[0],
+            participants: [...this.travelers],
+            note: ''
+          };
+          this.showExpenseModal = true;
+        },
+
+        editExpense(exp) {
+          this.expenseEditMode = true;
+          this.expenseForm = JSON.parse(JSON.stringify(exp));
+          this.showExpenseModal = true;
+        },
+
+        saveExpense() {
+          if (!this.expenseForm.name || !this.expenseForm.amount) {
+            alert('請填寫名稱及金額');
+            return;
+          }
+          if (!this.expenseForm.participants || this.expenseForm.participants.length === 0) {
+            alert('請至少勾選一位分攤者');
+            return;
+          }
+
+          const payload = {
+            ...this.expenseForm,
+            id: this.expenseForm.id || Date.now()
+          };
+
+          if (this.expenseEditMode) {
+            const idx = this.expenses.findIndex(x => x.id === payload.id);
+            if (idx > -1) this.expenses.splice(idx, 1, payload);
+          } else {
+            this.expenses.unshift(payload);
+          }
+
+          this.closeExpenseModal();
+          this.saveAll();
+        },
+
+        deleteExpense(id) {
+          if (!confirm('確定刪除這筆花費紀錄？')) return;
+          this.expenses = this.expenses.filter(x => x.id !== id);
+          this.saveAll();
+        },
+
+        closeExpenseModal() {
+          this.showExpenseModal = false;
+          this.expenseEditMode = false;
+        }
+      },
+
+     watch: {
+        // 頁籤切換時同步一下雲端最新狀態
+        activeTab() { this.saveAll(); },
+        selectedDayIndex() { this.saveAll(); }
+      },
+
+      mounted() {
+        this.loadSavedData();
+        this.fetchExchangeRate();
+        this.fetchWeather();
+      }
+    }).mount('#app');
+  </script>
+</body>
+</html>
